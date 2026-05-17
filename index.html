@@ -1,0 +1,153 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+<div class="login-wrap"> 
+ <div class="login-card"> 
+  <h1>CSR Training Portal</h1> 
+  <p class="subtext">Please enter  Username and Password to continue.</p>
+
+<input id="username" type="text" placeholder="Username" /><br>
+<br><input id="password" type="password" placeholder="Password" />
+<br>
+<br><button onclick="checkLogin()">Enter Training</button>
+
+   <p id="message"></p> 
+  </div> 
+ </div>
+
+<style>
+  .login-wrap {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+    background: #f4f4f4; /* subtle contrast so white box shows */
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 36px 30px;
+    border-radius: 22px;
+    text-align: center;
+
+    /* 👇 White-on-white downward shadow */
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.12),   /* main drop */
+      0 8px 12px rgba(0, 0, 0, 0.08),    /* mid softness */
+      0 2px 4px rgba(0, 0, 0, 0.06);     /* subtle edge */
+
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .login-card h1 {
+    margin: 0 0 10px;
+    color: #222;
+    font-size: 28px;
+  }
+
+  .subtext {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  #users {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 120px;
+    border: 1px solid #ddd;
+    font-size: 20px;
+    margin-bottom: 18px;
+    text-align: center;
+    background: #fafafa;
+  }
+
+  #passcode:focus {
+    outline: none;
+    border-color: #bbb;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+  }
+
+  button {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 500px;
+    border: none;
+    background: #ffffff;
+    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    /* subtle raised button */
+    box-shadow:
+      0 10px 18px rgba(0,0,0,0.15),
+      0 3px 6px rgba(0,0,0,0.08);
+
+    transition: all 0.2s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 14px 22px rgba(0,0,0,0.18),
+      0 5px 10px rgba(0,0,0,0.10);
+  }
+
+  button:active {
+    transform: translateY(1px);
+    box-shadow:
+      0 6px 10px rgba(0,0,0,0.12);
+  }
+
+  #message {
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+</style>
+<script>
+  const users = [
+    { username: "csrtraining", password: "ImLearning!" },
+    { username: "manager", password: "PizzaHut2026" },
+    { username: "CLB5438", password: "CBP!zz@Job1964" }
+  ];
+
+  const redirectURL = "https://www.cscneedtoknow.com/home";
+
+  function checkLogin() {
+    const enteredUser = document.getElementById("username").value.trim();
+    const enteredPass = document.getElementById("password").value.trim();
+    const message = document.getElementById("message");
+
+    const match = users.some(user =>
+      user.username === enteredUser && user.password === enteredPass
+    );
+
+    if (match) {
+      message.style.color = "green";
+      message.textContent = "Access granted! Loading training...";
+
+      setTimeout(() => {
+        window.location.href = redirectURL;
+      }, 700);
+    } else {
+      message.style.color = "#d32f2f";
+      message.textContent = "Incorrect username or password. Try again.";
+    }
+  }
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      checkLogin();
+    }
+  });
+</script>
+</body>
+</html>
