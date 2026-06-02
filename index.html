@@ -16,15 +16,22 @@
  </div>
 
 <style>
-  .login-wrap {
-    min-height: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Acme, sans-serif;
-    padding: 40px 20px;
-    background: #f4f4f4; /* subtle contrast so white box shows */
-  }
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Acme, sans-serif;
+  padding: 40px 20px;
+
+  background:
+    linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+    url("posupreme-login.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
   .login-card {
     width: 100%;
