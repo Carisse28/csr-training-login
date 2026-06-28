@@ -56,6 +56,7 @@ This project is currently built using:
 * HTML5
 * CSS3
 * JavaScript
+* GitHub Pages
 
 The project is designed to remain lightweight, maintainable, and compatible with GitHub Pages.
 
