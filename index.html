@@ -115,6 +115,18 @@
     font-family: Acme, sans-serif;
     font-size: 14px;
   }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
   </style>
 </head>
 <body>
@@ -123,10 +135,14 @@
   <h1>CSR Training Portal</h1>
   <p class="subtext">Please enter  Username and Password to continue.</p>
 
-<input id="username" type="text" placeholder="Username" /><br>
-<br><input id="password" type="password" placeholder="Password" />
-<br>
-<br><button onclick="checkLogin()">Enter Training</button>
+  <form id="login-form">
+    <label class="sr-only" for="username">Username</label>
+    <input id="username" type="text" placeholder="Username" autocomplete="username" /><br>
+    <br><label class="sr-only" for="password">Password</label>
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+    <br>
+    <br><button type="submit">Enter Training</button>
+  </form>
 
    <p id="message"></p>
   </div>
@@ -163,10 +179,9 @@
     }
   }
 
-  document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-      checkLogin();
-    }
+  document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    checkLogin();
   });
 </script>
 </body>
